@@ -6,6 +6,7 @@ def run():
     system_name = platform.system()
 
     ps_script_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "ps/prelim.ps1"))
+    bash_script_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "bash/prelim.sh"))
 
     if system_name == "Windows":
         if not os.path.exists(ps_script_path):
@@ -19,7 +20,6 @@ def run():
                 print(f"Failed to execute prelim.ps1: {e}")
                 return 0
     elif system_name in ["Darwin", "Linux"]:
-        bash_script_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "bash/prelim.sh"))
         try:
             subprocess.run(["bash", bash_script_path], check=True)
             return 2
@@ -28,3 +28,8 @@ def run():
             return 0
     else:
         print("Unsupported operating system.")
+        return -1
+
+if __name__ == "__main__":
+    run()
+
