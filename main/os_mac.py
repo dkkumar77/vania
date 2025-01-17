@@ -17,8 +17,20 @@ import datetime
 
 
 
+
+
+with open("access_key.txt", 'r') as file:
+    
+    ACCESS_KEY = file.read().strip()
+
+
+""" 
 porcupine = pvporcupine.create(access_key=ACCESS_KEY, keyword_paths=[KEYWORD_PATH])
+"""
+
+"""
 pa = pyaudio.PyAudio()
+
 audio_stream = pa.open(
     rate=porcupine.sample_rate,
     channels=1,
@@ -26,6 +38,8 @@ audio_stream = pa.open(
     input=True,
     frames_per_buffer=porcupine.frame_length
 )
+"""
+
 
 engine = pyttsx3.init()
 engine.setProperty('rate', 200)
